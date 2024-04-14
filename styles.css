@@ -1,0 +1,44 @@
+body{
+    padding: 0;
+    margin: 0;
+    background-image: radial-gradient(circle at 76.52% 4.07%, #98bd75 0, #8cbf7c 3.85%, #7fc184 7.69%, #72c38d 11.54%, #64c497 15.38%, #55c5a1 19.23%, #45c5ac 23.08%, #33c6b6 26.92%, #1ac6c1 30.77%, #00c5cb 34.62%, #00c5d5 38.46%, #00c4de 42.31%, #00c3e6 46.15%, #0cc1ed 50%, #2fbff3 53.85%, #47bdf7 57.69%, #5cbafb 61.54%, #6fb7fc 65.38%, #82b4fc 69.23%, #93b0fb 73.08%, #a3adf8 76.92%, #b3a9f4 80.77%, #c0a5ee 84.62%, #cda1e8 88.46%, #d89ee0 92.31%, #e29bd7 96.15%, #ea98ce 100%);
+}
+
+.calculadora-grilla{
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    min-height: 100vh;
+    grid-template-columns: repeat(4, 100px);
+    grid-template-rows: minmax(120px, auto) repeat(5, 100px);
+}
+
+.calculadora-grilla > button{
+    cursor: pointer;
+    font-size: 2rem;
+    border: 1px solid white;
+    outline: none;
+    background-image: linear-gradient(180deg, #adffff 0, #a4ffff 25%, #9df2f2 50%, #97dade 75%, #92c5cb 100%);
+}
+
+.output{
+    grid-column: 1 / -1;
+    background-color: rgba(0, 0, 0, .75);
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    flex-direction: column;
+    padding: 10px;
+    word-wrap: break-word;
+    word-wrap: break-all;
+}
+
+.output .display{
+    color: black;
+    font-size: 1.85rem;
+    text-align: right;
+}
+
+.calculadora-grilla > button:hover {
+    background-color: rgba(255, 255, 255, 0.75);
+}
