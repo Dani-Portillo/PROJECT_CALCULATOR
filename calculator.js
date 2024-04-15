@@ -6,6 +6,10 @@ const botonOpera = document.getElementsByName('data-opera');
 const botonIgual = document.getElementsByName('data-igual')[0]; /**[0] para que no devuelva arreglo */
 const botonDelete = document.getElementsByName('data-delete')[0];
 var result = document.getElementById('result');
+// ----------------------
+var opeActual = '';
+var opeAnterior = '';
+var operacion = undefined;
 
 botonNumeros.forEach(function (boton){
     boton.addEventListener('click', function(){
@@ -32,3 +36,60 @@ botonDelete.addEventListener('click', function(){
     actualizarDisplay();
 })
 
+
+// Capturando los metodos
+
+function selectOperacion(op){
+    if(opeActual === '') return;
+    if (opeAnterior !== ''){
+        calcular();
+    }
+    operacion = op.toString();
+    opeAnterior = opeActual;
+    opeActual = '';
+}
+
+function calcular(){
+    var calculo;
+    const anterior = parseFloat(opeAnterior);
+    const actual = parseFloat(opeActual);
+    if (isNaN(anterior) || isNaN(actual)) return;
+    switch (operacion) {
+        case '+':
+            calculo = anterior + actual;
+            break;
+        case '-':
+            calculo = anterior - actual;
+            break;
+        case 'x':
+            calculo = anterior * actual;
+            break;
+        case '/':
+            calculo = anterior / actual;
+            break;
+        default:
+            break;
+    }
+    opeActual = calculo;
+    operacion = undefined;
+    opeAnterior = '';
+}
+
+
+// Capturando los numeros
+function agregarNumero(num){
+    opeActual = opeActual.toString() + num.toString();
+    actualizarDisplay();
+}
+// Capturando el boton limpiar
+function clear(){
+    opeActual = '';
+    opeAnterior = '';
+    operacion = undefined;
+}
+
+function actualizarDisplay(){
+    result.value = opeActual;
+}
+
+clear();
